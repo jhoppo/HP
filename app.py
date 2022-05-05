@@ -30,7 +30,7 @@ def index():
     return 'index'
 
 @app.route('/file/<path:localSystemFilePath>', methods=['GET','POST', 'PATCH', 'DELETE'])
-def watchPath(localSystemFilePath):
+def watchPath(localSystemFilePath=''):
     def uploadFile(method):
         if request.method == 'DELETE':
             f = request.form['file']
@@ -56,7 +56,7 @@ def watchPath(localSystemFilePath):
                 f.save(fPath)
                 return 'File up to dated'
 
-    reqPath = f"/file/{localSystemFilePath}" if len(localSystemFilePath)>0 else "/file/"
+    reqPath = f"/{localSystemFilePath}" 
     if request.method == 'GET':
         if os.path.isfile(reqPath):
             with open(reqPath, 'rb') as f:
