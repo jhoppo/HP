@@ -41,10 +41,10 @@ def watchPath(localSystemFilePath=''):
             except:
                 return 'File Not Found'
         else:
-            if not os.path.exists(reqPath):
+            if not os.path.exists(reqPath) :
                 os.makedirs(reqPath)
-            if request.files == {}:
-                return "Folder Created"
+                if request.files == {}:
+                    return "Folder Created"
             f = request.files['file']
             fn = secure_filename(f.filename)
             fPath = os.path.join(reqPath, fn)
