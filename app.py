@@ -58,7 +58,7 @@ def watchPath(localSystemFilePath=''):
                 f.save(fPath)
                 return 'File up to dated'
 
-    reqPath = f"./{localSystemFilePath}"
+    reqPath = f"/{localSystemFilePath}"
     if request.method == 'GET':
         if os.path.isfile(reqPath):
             with open(reqPath, 'rb') as f:
