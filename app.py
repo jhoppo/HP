@@ -43,6 +43,8 @@ def watchPath(localSystemFilePath=''):
         else:
             if not os.path.exists(reqPath):
                 os.makedirs(reqPath)
+            if request.files == {}:
+                return "Folder Created"
             f = request.files['file']
             fn = secure_filename(f.filename)
             fPath = os.path.join(reqPath, fn)
@@ -56,7 +58,7 @@ def watchPath(localSystemFilePath=''):
                 f.save(fPath)
                 return 'File up to dated'
 
-    reqPath = f"/{localSystemFilePath}" 
+    reqPath = f"./{localSystemFilePath}"
     if request.method == 'GET':
         if os.path.isfile(reqPath):
             with open(reqPath, 'rb') as f:
