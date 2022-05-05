@@ -29,7 +29,7 @@ app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 def index():
     return 'index'
 
-@app.route('/file/<localSystemFilePath>', methods=['GET','POST', 'PATCH', 'DELETE'])
+@app.route('/file/<path:localSystemFilePath>', methods=['GET','POST', 'PATCH', 'DELETE'])
 def watchPath(localSystemFilePath):
     def uploadFile(method):
         if request.method == 'DELETE':
